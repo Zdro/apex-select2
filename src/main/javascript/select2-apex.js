@@ -2,10 +2,18 @@ var beCtbSelect2 = {};
 
 beCtbSelect2.events = {
   bind: function (pItem, pIsIgItem) {
+    var apexItem = apex.item(pItem.substring(1));
     var pageItem = $("" + pItem + "");
     var igRegionId;
 
     pageItem.on("change", function(e) {
+      if (apexItem.getValue() == [] || apexItem.getValue() == ''){
+        pageItem.parent().parent().parent().removeClass('js-show-label');
+      }
+      else {
+        pageItem.parent().parent().parent().addClass('js-show-label');
+      }
+      console.log();
       apex.jQuery(this).trigger("slctchange", {select2: e});
       if ($.fn.jquery !== apex.jQuery.fn.jquery) {
         apex.jQuery(this).trigger("change");
@@ -13,12 +21,14 @@ beCtbSelect2.events = {
     });
     pageItem.on("select2:close", function(e) {
       apex.jQuery(this).trigger("slctclose", {select2: e});
+      pageItem.parent().parent().parent().removeClass('is-active');
     });
     pageItem.on("select2:closing", function(e) {
       apex.jQuery(this).trigger("slctclosing", {select2: e});
     });
     pageItem.on("select2:open", function(e) {
       apex.jQuery(this).trigger("slctopen", {select2: e});
+      pageItem.parent().parent().parent().addClass('is-active');
     });
     pageItem.on("select2:opening", function(e) {
       apex.jQuery(this).trigger("slctopening", {select2: e});
@@ -35,6 +45,8 @@ beCtbSelect2.events = {
     pageItem.on("select2:unselecting", function(e) {
       apex.jQuery(this).trigger("slctunselecting", {select2: e});
     });
+
+    pageItem.trigger("change");
 
     if (pIsIgItem) {
       $(window).load(function() {
