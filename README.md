@@ -15,6 +15,7 @@ In Oracle Application Express, the Select2 plugin can serve as a replacement for
 * List Manager
 
 More information and a demo can be found [here](http://apex.oracle.com/pls/apex/f?p=64237:20).
+Demo app with Universal Theme [here](https://apex.oracle.com/pls/apex/f?p=53730:1)
 
 ## Blog Posts
 * August 31, 2013 – [Revamp select lists in APEX with Select2](https://apexplained.wordpress.com/2013/08/31/revamp-select-lists-in-apex-with-select2/)
